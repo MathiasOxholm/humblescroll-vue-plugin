@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import Card from '@/components/Card.vue';
-import HumbleScroll from '../../../src/humbleScroll.vue';
 import Section from '@/components/Section.vue';
-
 </script>
 
 <template>
