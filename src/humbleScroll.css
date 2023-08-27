@@ -1,0 +1,75 @@
+:root {
+  --hs-delay: 0ms;
+  --hs-easing: var(--hs-ease-out);
+  --hs-duration: 600ms;
+  --hs-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --hs-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --hs-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --hs-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --hs-opacity: 1;
+  --hs-translate-y: 0;
+  --hs-translate-x: 0;
+  --hs-scale: 1;
+  --hs-rotate: 0deg;
+  --hs-perspective: 0;
+  --hs-rotate-x: 0deg;
+  --hs-rotate-y: 0deg;
+  --hs-skew-x: 0deg;
+  --hs-skew-y: 0deg;
+  --hs-translate-ratio: 1;
+  --hs-scale-ratio: 0.2;
+  --hs-duration-ratio: 1;
+  --hs-translate-x-amount: 2rem;
+  --hs-translate-y-amount: 3rem;
+  --hs-flip-x-amount: 100deg;
+  --hs-flip-y-amount: -100deg;
+  --hs-perspective-amount: 2000px;
+  --hs-stagger-amount: 100ms;
+  --hs-skew-amount: 20deg;
+  --hs-reveal-amount: 100%;
+  --hs-blur: 0;
+  --hs-blur-amount: 5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-hs] > * {
+    transition-duration: calc(var(--hs-duration) * var(--hs-duration-ratio));
+    transition-timing-function: var(--hs-easing);
+    transition-delay: var(--hs-delay);
+    transition-property: transform, opacity, filter;
+    opacity: var(--hs-opacity);
+    transform: translate3d(var(--hs-translate-x), var(--hs-translate-y), 0px) scale(var(--hs-scale)) rotate(var(--hs-rotate)) perspective(var(--hs-perspective)) rotateX(var(--hs-rotate-x)) rotateY(var(--hs-rotate-y)) skew(var(--hs-skew-x), var(--hs-skew-y));
+    filter: blur(var(--hs-blur));
+  }
+
+  [data-hs]:not(.hs-visible) {
+    pointer-events: none;
+  }
+
+  [data-hs].hs-visible > * {
+    pointer-events: auto;
+    --hs-opacity: 1 !important;
+    --hs-translate-y: 0 !important;
+    --hs-translate-x: 0 !important;
+    --hs-scale: 1 !important;
+    --hs-rotate: 0deg !important;
+    --hs-rotate-x: 0deg !important;
+    --hs-rotate-y: 0deg !important;
+    --hs-skew-x: 0deg !important;
+    --hs-skew-y: 0deg !important;
+    --hs-blur: 0 !important;
+  }
+
+  [data-hs*='blur'] {
+    --hs-blur: var(--hs-blur-amount);
+  }
+
+  [data-hs*='flip'] > * {
+    --hs-perspective: var(--hs-perspective-amount);
+    backface-visibility: hidden;
+  }
+
+  [data-hs*='reveal'] {
+    overflow: hidden;
+  }
+}

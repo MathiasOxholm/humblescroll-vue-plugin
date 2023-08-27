@@ -1,0 +1,26 @@
+{
+  "name": "humblescroll-vue-plugin",
+  "version": "1.0.0",
+  "description": "A Vue 3 and Tailwind plugin for scroll animations",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "tailwindCss",
+    "animations",
+    "AOS"
+  ],
+  "author": "Mathias Oxholm",
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^3.0.0",
+    "tailwindcss": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.0",
+    "@types/node": "^18.17.5",
+    "typescript": "~5.1.6"
+  }
+}
