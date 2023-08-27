@@ -19,8 +19,8 @@ import Section from '@/components/Section.vue';
             <Card title="Fade down" animation="fade down" />
             <Card title="Fade right" animation="fade right" />
             <Card title="Fade left" animation="fade left" />
-            <Card title="Fade left" animation="fade left" />
-            <Card title="Fade" animation="fade up left" />
+            <Card title="Fade in" animation="fade" />
+            <Card title="Fade up left" animation="fade up left" />
           </Section>
 
           <Section
@@ -63,9 +63,78 @@ import Section from '@/components/Section.vue';
             >
           
             <Card title="Skew right" animation="skew-right fade right blur" />
-
+            <Card title="Skew left" animation="skew-left fade left blur" />
+            <Card title="Skew up" animation="skew-up fade up blur" />
+            <Card title="Skew down" animation="skew-down fade down blur" />
           </Section>
 
+          <Section
+            id="reveal"
+            title="Reveal animations"
+            description="Parent has overflow hidden and child slides from 100% to 0"
+            >
+            <Card title="Reveal up" animation="reveal-up fade" />
+            <Card title="Reveal down" animation="reveal-down fade" />
+            <Card title="Reveal right" animation="reveal-right fade" />
+            <Card title="Reveal left" animation="reveal-left fade" />
+          </Section>
+
+          <Section
+            id="blur"
+            title="Blur effect"
+            description="Who doesn't like a good motion blur effect?"
+            :columns="3"
+          >
+            <Card title="Blur effect" animation="fade right blur" />
+            <Card title="Blur effect" animation="zoom-in fade up blur" :variables="{ blur: '40px' }" />
+            <Card title="Blur effect" animation="fade left blur" />
+          </Section>
+
+          <Section
+            id="stagger"
+            title="Stagger"
+            description="Adjust delay for each item in a loop"
+          >
+            <div class="col-span-2 grid lg:grid-cols-4 gap-2">
+              <Card
+                v-for="n in 8"
+                :key="n"
+                :title="`Card ${n + 1}`"
+                className="min-h-[200px]"
+                animation="fade up"
+                :variables="{ delay: `${n}00ms` }">
+                <p>{{`--hs-delay: ${n}00ms`}}</p>
+              </Card>
+            </div>
+          </Section>
+
+          <Section
+            id="once"
+            title="Once"
+            description="Stays visible even with repeat or mirror enabled">
+            <Card
+              title="Once"
+              animation="fade up once"
+            />
+            <Card
+              title="Not once"
+              animation="fade up"
+            />
+          </Section>
+
+          <Section
+            id="responsive"
+            title="Responsive"
+            description="Responsive animations based on breakpoints. Like any other TailwindCSS utilily class. Default prefixes are sm:, md:, lg:, xl:, 2xl: ">
+            <Card
+              title="Example 1"
+              animation="fade left md:up"
+            />
+            <Card
+              title="Example 2"
+              animation="fade up lg:down"
+            />
+          </Section>
         </div>
       </div>
     </div>
