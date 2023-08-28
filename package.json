@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "A Vue 3 and Tailwind plugin for scroll animations",
   "main": "./src/index.ts",
+  "rootDir": "./src",
+  "types": "./src/types.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build ./src/index.ts --outDir ./dist --target esnext --minify --lib dom,esnext --formats es"
   },
   "keywords": [
     "vue",
@@ -15,12 +20,14 @@
   "author": "Mathias Oxholm",
   "license": "ISC",
   "peerDependencies": {
-    "vue": "^3.3.3",
-    "tailwindcss": "^3.0.0"
+    "tailwindcss": "^3.0.0",
+    "vue": "^3.3.3"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.0",
     "@types/node": "^18.17.5",
-    "typescript": "~5.1.6"
+    "@vitejs/plugin-vue": "^4.3.3",
+    "typescript": "~5.1.6",
+    "vite": "^4.4.9"
   }
 }
