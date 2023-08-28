@@ -5,13 +5,15 @@ export interface Offset {
   left: number;
 }
 
+export type OptionalOffset = Partial<Offset>;
+
 export interface Options {
   root: HTMLElement | null;
   visibleClass: string;
   threshold: number;
   repeat: boolean;
   mirror: boolean;
-  offset: Offset;
+  offset: OptionalOffset;
 }
 
 export interface OptionalOptions {
