@@ -15,8 +15,8 @@ interface Props {
 const { animation = '', innerClass = '', variables } = defineProps<Props>();
 
 const element = ref<HTMLElement | null>(null);
-const humbleElements = inject<HTMLElement[]>('humbleElements');
-const humbleObserver = inject<IntersectionObserver>('humbleObserver');
+const humbleElements = ref<HTMLElement[]>([]);
+const humbleObserver = ref<IntersectionObserver>();
 const isIntersecting = ref<boolean>(false);
 
 const emit = defineEmits(['intersecting']);
@@ -39,9 +39,12 @@ const cssVariables = computed(() => {
 });
 
 onMounted(() => {
-  if (element.value && humbleObserver && humbleElements) {
-    humbleElements.push(element.value);
-    humbleObserver.observe(element.value);
+  humbleElements.value = inject<HTMLElement[]>('humbleElements', []);
+  humbleObserver.value = inject<IntersectionObserver>('humbleObserver');
+
+  if (element.value && humbleObserver.value && humbleElements.value) {
+    humbleElements.value.push(element.value);
+    humbleObserver.value.observe(element.value);
 
     onEvent('elementIntersecting', (intersectingElement: HTMLElement) => {
       if (intersectingElement === element.value) {
@@ -53,12 +56,12 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  if (element.value && humbleObserver && humbleElements) {
-    const index = humbleElements.indexOf(element.value);
+  if (element.value && humbleObserver.value && humbleElements.value) {
+    const index = humbleElements.value.indexOf(element.value);
 
     if (index !== -1) {
-      humbleElements.splice(index, 1);
-      humbleObserver.unobserve(element.value);
+      humbleElements.value.splice(index, 1);
+      humbleObserver.value.unobserve(element.value);
     }
   }
 });
