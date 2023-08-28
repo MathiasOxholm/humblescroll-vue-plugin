@@ -5,7 +5,12 @@ export interface Offset {
   left: number;
 }
 
-export type OptionalOffset = Partial<Offset>;
+export interface OptionalOffset {
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+}
 
 export interface Options {
   root: HTMLElement | null;

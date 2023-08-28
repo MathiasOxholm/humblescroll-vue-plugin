@@ -1,6 +1,5 @@
 import type { App } from "vue";
 import useObserver from "./intersectionObserver";
-import './HumbleScroll.css'
 import type { OptionalOptions } from './types';
 
 /**
