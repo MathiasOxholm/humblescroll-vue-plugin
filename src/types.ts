@@ -1,11 +1,11 @@
-interface Offset {
+export interface Offset {
   top: number;
   right: number;
   bottom: number;
   left: number;
 }
 
-interface Options {
+export interface Options {
   root: HTMLElement | null;
   visibleClass: string;
   threshold: number;
@@ -14,9 +14,9 @@ interface Options {
   offset: Offset;
 }
 
-type OptionalOptions = Partial<Options>;
+export type OptionalOptions = Partial<Options>;
 
-interface HumbleVariables {
+export interface HumbleVariables {
   delay?: string;
   easing?: string;
   duration?: string;
@@ -45,13 +45,13 @@ interface HumbleVariables {
   blurAmount?: string;
 }
 
-interface PluginOptions {
+export interface PluginOptions {
   addUtilities: (utilities: any) => void;
   config: () => any;
 }
 
-type HumbleEasing = 'ease-in' | 'ease-out' | 'ease-in-out' | 'ease-out-back';
+export type HumbleEasing = 'ease-in' | 'ease-out' | 'ease-in-out' | 'ease-out-back';
 
-type HumbleSize = 'small' | 'medium' | 'large' | 'extra-large';
+export type HumbleSize = 'small' | 'medium' | 'large' | 'extra-large';
 
-type HumbleSpeed = 'extra-slow' | 'slow' | 'fast' | 'extra-fast';
+export type HumbleSpeed = 'extra-slow' | 'slow' | 'fast' | 'extra-fast';

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, inject, computed } from 'vue';
 import { onEvent } from './eventBus';
+import type { HumbleVariables, HumbleEasing, HumbleSize, HumbleSpeed } from './types';
 
 interface Props {
   animation?: string;

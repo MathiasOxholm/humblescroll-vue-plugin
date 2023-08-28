@@ -1,5 +1,6 @@
 import plugin from 'tailwindcss/plugin';
 import { attrName, varName, easingVariations, sizeVariations, speedVariations } from './variables';
+import type { PluginOptions } from './types';
 
 function generateTranslateCalc(translateAmount: string, translateRatio: string, negative: boolean) {
   const base = `${translateAmount} * ${translateRatio}`;

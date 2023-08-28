@@ -1,5 +1,6 @@
 import { prefix } from './variables';
 import { emit } from './eventBus';
+import type { OptionalOptions, Offset, Options } from './types';
 
 export default function useObserver(options: OptionalOptions = {}) {
   const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
