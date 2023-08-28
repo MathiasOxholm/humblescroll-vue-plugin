@@ -49,3 +49,9 @@ interface PluginOptions {
   addUtilities: (utilities: any) => void;
   config: () => any;
 }
+
+type HumbleEasing = 'ease-in' | 'ease-out' | 'ease-in-out' | 'ease-out-back';
+
+type HumbleSize = 'small' | 'medium' | 'large' | 'extra-large';
+
+type HumbleSpeed = 'extra-slow' | 'slow' | 'fast' | 'extra-fast';

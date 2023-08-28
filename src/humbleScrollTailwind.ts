@@ -1,5 +1,5 @@
 import plugin from 'tailwindcss/plugin';
-import { attrName, varName } from './variables';
+import { attrName, varName, easingVariations, sizeVariations, speedVariations } from './variables';
 
 function generateTranslateCalc(translateAmount: string, translateRatio: string, negative: boolean) {
   const base = `${translateAmount} * ${translateRatio}`;
@@ -32,6 +32,30 @@ function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
     return utilities;
   }
 
+  function generateEasing() {
+    const easing: any = {};
+
+    easingVariations.forEach((variation) => {
+      easing[`[${attrName}-easing*='${variation}'] > *`] = {
+        [`${varName}-easing`]: `var(${varName}-${variation})`,
+      }
+    })
+
+    return easing;
+  }
+
+  function generateVariations(name: string, variations: any, prop: string) {
+    const utilities: any = {};
+
+    Object.entries(variations).forEach(([variation, value]) => {
+      utilities[`[${attrName}-${name}~='${variation}'] > *`] = {
+        [prop]: value,
+      }
+    })
+
+    return utilities;
+  }
+
   const up = generateResponsiveUtilities('up', '~', `${varName}-translate-y`, generateTranslateCalc(`var(${varName}-translate-y-amount)`, `var(${varName}-translate-ratio)`, false));
   const down = generateResponsiveUtilities('down', '~', `${varName}-translate-y`, generateTranslateCalc(`var(${varName}-translate-y-amount)`, `var(${varName}-translate-ratio)`, true));
   const left = generateResponsiveUtilities('left', '~', `${varName}-translate-x`, generateTranslateCalc(`var(${varName}-translate-x-amount)`, `var(${varName}-translate-ratio)`, false));
@@ -59,6 +83,11 @@ function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
   const flipRight = generateResponsiveUtilities('flip-right', '*', `${varName}-rotate-y`, `calc(0deg - var(${varName}-flip-y-amount))`);
   const flipLeft = generateResponsiveUtilities('flip-left', '*', `${varName}-rotate-y`, `var(${varName}-flip-y-amount)`);
 
+  const easing = generateEasing();
+
+  const size = generateVariations('size', sizeVariations, `${varName}-translate-ratio`);
+  const speed = generateVariations('speed', speedVariations, `${varName}-duration-ratio`);
+
   const utilitiesToAdd = [
     up,
     down,
@@ -80,6 +109,9 @@ function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
     flipDown,
     flipRight,
     flipLeft,
+    easing,
+    size,
+    speed
   ];
 
   utilitiesToAdd.forEach((utility) => addUtilities(utility));

@@ -28,7 +28,7 @@
   --hs-skew-amount: 20deg;
   --hs-reveal-amount: 100%;
   --hs-blur: 0;
-  --hs-blur-amount: 5px;
+  --hs-blur-amount: 8px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

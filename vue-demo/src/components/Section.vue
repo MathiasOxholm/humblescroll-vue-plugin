@@ -16,12 +16,12 @@ if (props.columns == 3) {
 
 <template>
 <div class="flex flex-col justify-center py-20">
-  <div class="mb-16 flex flex-col space-y-6">
+  <div class="flex flex-col mb-16 space-y-6">
     <HumbleScroll animation="fade up once">
       <h2 class="text-4xl lg:text-5xl">{{ title }}</h2>
     </HumbleScroll>
     <HumbleScroll animation="fade up once">
-      <p class="text-lg text-slate-400 max-w-xl">{{ description }}</p>
+      <p class="max-w-xl text-lg text-slate-400">{{ description }}</p>
     </HumbleScroll>
   </div>
 

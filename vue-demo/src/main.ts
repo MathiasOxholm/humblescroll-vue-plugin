@@ -12,6 +12,9 @@ app.use(router)
 app.use(humbleScrollVuePlugin, {
   repeat: true,
   mirror: true,
+  offset: {
+    bottom: -100
+  }
 })
 
 app.mount('#app')

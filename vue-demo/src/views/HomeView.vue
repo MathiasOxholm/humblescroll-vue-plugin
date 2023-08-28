@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import Card from '@/components/Card.vue';
 import Section from '@/components/Section.vue';
+import humbleScroll from '../../../src/humbleScroll.vue';
 </script>
 
 <template>
   <main>
     <div class="container">
-      <div class="grid lg:grid-cols-12 px-6 lg:px-8 pb-8 gap-20">
+      <div class="grid gap-20 px-6 pb-8 lg:grid-cols-12 lg:px-8">
         <div class="lg:col-span-9">
           <Section 
             id="fade"
             title="Fade animations"
             description="Opacity from 0 to 1 - you know the drill."
           >
-            <Card title="Fade up" animation="fade up" />
+            <Card title="Fade up" animation="fade up lg:left lg:blur" />
             <Card title="Fade down" animation="fade down" />
             <Card title="Fade right" animation="fade right" />
             <Card title="Fade left" animation="fade left" />
@@ -60,10 +61,10 @@ import Section from '@/components/Section.vue';
             description="Skew it to the left, skew it to the right! Combine with blur to make them feel blazingly fast."
             >
           
-            <Card title="Skew right" animation="skew-right fade right blur" />
-            <Card title="Skew left" animation="skew-left fade left blur" />
-            <Card title="Skew up" animation="skew-up fade up blur" />
-            <Card title="Skew down" animation="skew-down fade down blur" />
+            <Card title="Skew right" animation="skew-right fade right blur" speed="fast" easing="ease-out-back" size="extra-large" />
+            <Card title="Skew left" animation="skew-left fade left blur" speed="fast" easing="ease-out-back" size="extra-large" />
+            <Card title="Skew up" animation="skew-up fade up blur" speed="fast" easing="ease-out-back" size="extra-large" />
+            <Card title="Skew down" animation="skew-down fade down blur" speed="fast" easing="ease-out-back" size="extra-large" />
           </Section>
 
           <Section
@@ -87,13 +88,48 @@ import Section from '@/components/Section.vue';
             <Card title="Blur effect" animation="zoom-in fade up blur" :variables="{ blur: '40px' }" />
             <Card title="Blur effect" animation="fade left blur" />
           </Section>
+          
+          <Section
+            id="easing"
+            title="Easing variations"
+            description="We only ship with a few easings, but you can easily add your own."
+            >
+            <Card title="Ease in" animation="fade up" easing="ease-in" />
+            <Card title="Ease out" animation="fade up" easing="ease-out" />
+            <Card title="Ease in out" animation="fade up" easing="ease-in-out" />
+            <Card title="Ease out back" animation="fade up" easing="ease-out-back" />
+          </Section>
+
+          <Section
+            id="speed"
+            title="Speed variations"
+            description="Gotta go fast! Scales from the global duration."
+            >
+            <Card title="Slow" animation="zoom-in fade up right blur" speed="slow" />
+            <Card title="Extra slow" animation="fade up left blur" speed="extra-slow" />
+            <Card title="Regular" animation="fade zoom-out" class="col-span-2" />
+            <Card title="Fast" animation="fade up right blur" speed="fast" />
+            <Card title="Extra fast" animation="fade up left blur" speed="extra-fast" />
+          </Section>
+          
+          <Section
+            id="size"
+            title="Size variations"
+            description="Define the size of the animation. Scales from the global size."
+            >
+            <Card title="Small" animation="fade right" size="small" />
+            <Card title="Medium" animation="fade left" size="medium" />
+            <Card title="Regular" animation="fade zoom-out" class="col-span-2" />
+            <Card title="Large" animation="fade right" size="large" />
+            <Card title="Extra large" animation="fade left" size="extra-large" />
+          </Section>
 
           <Section
             id="stagger"
             title="Stagger"
             description="Adjust delay for each item in a loop"
           >
-            <div class="col-span-2 grid lg:grid-cols-4 gap-2">
+            <div class="grid col-span-2 gap-2 lg:grid-cols-4">
               <Card
                 v-for="n in 8"
                 :key="n"
@@ -123,7 +159,7 @@ import Section from '@/components/Section.vue';
           <Section
             id="responsive"
             title="Responsive"
-            description="Responsive animations based on breakpoints. Like any other TailwindCSS utilily class. Default prefixes are sm:, md:, lg:, xl:, 2xl: ">
+            description="Responsive animations based on breakpoints. Like any other TailwindCSS utility class. Default prefixes are sm:, md:, lg:, xl:, 2xl: ">
             <Card
               title="Example 1"
               animation="fade left md:up"
@@ -132,6 +168,29 @@ import Section from '@/components/Section.vue';
               title="Example 2"
               animation="fade up lg:down"
             />
+          </Section>
+          
+          <Section
+            id="state"
+            title="State"
+            description="Internal state is reflected wether or not element is intersecting.">
+            <humbleScroll v-slot="{ isIntersecting }">
+              <div 
+                class="flex flex-col items-start justify-between px-8 py-8 transition-all duration-300 rounded-lg"
+                :class="[isIntersecting ? 'bg-green-500 text-slate-800' : 'text-white bg-slate-800']"  
+              >
+                <p class="text-2xl">{{ isIntersecting ? 'Intersecting' : 'Not intersecting' }}</p>
+              </div>
+            </humbleScroll>
+            <humbleScroll v-slot="{ isIntersecting }">
+              <div 
+                class="flex flex-col items-start justify-between px-8 py-8 transition-all duration-300 rounded-lg"
+                :class="[isIntersecting ? 'bg-red-500 text-slate-800' : 'text-white bg-slate-800']"  
+              >
+                <p class="text-2xl">{{ isIntersecting ? 'Intersecting' : 'Not intersecting' }}</p>
+                <p v-if="isIntersecting" class="mt-4">Im intersecting</p>
+              </div>
+            </humbleScroll>
           </Section>
         </div>
       </div>
