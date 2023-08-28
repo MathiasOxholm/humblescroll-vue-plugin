@@ -1,15 +1,23 @@
 {
-  "name": "humblescroll-vue-plugin",
-  "version": "1.0.0",
+  "name": "humblescroll-vue",
+  "type": "module",
+  "version": "1.0.1",
   "description": "A Vue 3 and Tailwind plugin for scroll animations",
-  "main": "./src/index.ts",
-  "rootDir": "./src",
-  "types": "./src/types.ts",
   "files": [
-    "src"
+    "dist"
   ],
+  "main": "./dist/humble-scroll.js",
+  "module": "./dist/humble-scroll.umd.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/humble-scroll.js",
+      "require": "./dist/humble-scroll.umd.cjs"
+    }
+  },
   "scripts": {
-    "build": "vite build ./src/index.ts --outDir ./dist --target esnext --minify --lib dom,esnext --formats es"
+    "dev": "vite",
+    "build": "vite build",
+    "build:watch": "vite build --watch"
   },
   "keywords": [
     "vue",
@@ -20,14 +28,17 @@
   "author": "Mathias Oxholm",
   "license": "ISC",
   "peerDependencies": {
-    "tailwindcss": "^3.0.0",
-    "vue": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@babel/types": "^7.22.11",
     "@tsconfig/node18": "^18.2.0",
     "@types/node": "^18.17.5",
     "@vitejs/plugin-vue": "^4.3.3",
+    "@vue/tsconfig": "^0.4.0",
     "typescript": "~5.1.6",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.2"
   }
 }

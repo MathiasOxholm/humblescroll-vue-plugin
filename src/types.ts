@@ -14,7 +14,13 @@ export interface Options {
   offset: Offset;
 }
 
-export type OptionalOptions = Partial<Options>;
+export interface OptionalOptions {
+  root?: HTMLElement | null;
+  threshold?: number;
+  repeat?: boolean;
+  mirror?: boolean;
+  offset?: Offset;
+}
 
 export interface HumbleVariables {
   delay?: string;

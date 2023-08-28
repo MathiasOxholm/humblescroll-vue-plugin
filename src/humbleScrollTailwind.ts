@@ -1,4 +1,3 @@
-
 import plugin from 'tailwindcss/plugin';
 import { attrName, varName, easingVariations, sizeVariations, speedVariations } from './variables';
 import type { PluginOptions } from './types';
