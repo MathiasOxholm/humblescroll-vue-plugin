@@ -16,7 +16,7 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue'],
+      external: ['vue', '@vue/runtime-core', 'tailwindcss/plugin'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
@@ -29,7 +29,7 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      insertTypesEntry: true,
+      rollupTypes: true,
     })
   ],
   resolve: {
