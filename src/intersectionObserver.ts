@@ -48,7 +48,7 @@ export default function useObserver(options: OptionalOptions = {}) {
         return
       }
 
-      if (entry.isIntersecting && once) {
+      if (entry.isIntersecting && once && once === 'true') {
         targetElement.classList.add(visibleClass)
         intersectionObserver.unobserve(targetElement)
         emit('elementIntersecting', targetElement)
