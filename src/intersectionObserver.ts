@@ -39,7 +39,7 @@ export default function useObserver(options: OptionalOptions = {}) {
   function animationObserverFunction(entries: IntersectionObserverEntry[]) {
     entries.forEach((entry) => {
       const targetElement = entry.target as HTMLElement;
-      const once = targetElement.dataset['hs-once'];
+      const once = targetElement.dataset.hsOnce;
 
       if (!mergedOptions.repeat && entry.isIntersecting) {
         targetElement.classList.add(visibleClass)
