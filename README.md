@@ -288,7 +288,7 @@ Default variation for animation durations (scales from `--hs-duration`).
 Ensure the animation only runs once - even with `repeat` and `mirror` enabled.
 
 ```html
-<HumbleScroll animation="fade up once" />
+<HumbleScroll animation="fade up" :once="true" />
 ```
 
 ### 12. Responsive animations
@@ -306,12 +306,12 @@ In this responsive age developers need the ability to animate differently based 
 
 Combine animations inside the `animation` prop (space seperated).
   
-  ```html
-  <HumbleScroll animation="fade up" speed="slow" />
-  <HumbleScroll animation="fade up zoom-in" size="large" />
-  <HumbleScroll animation="fade right flip-left blur" />
-  <HumbleScroll animation="skew-right fade right blur" speed="fast" easing="ease-out-back" />
-  ```
+```html
+<HumbleScroll animation="fade up" speed="slow" />
+<HumbleScroll animation="fade up zoom-in" size="large" />
+<HumbleScroll animation="fade right flip-left blur" />
+<HumbleScroll animation="skew-right fade right blur" speed="fast" easing="ease-out-back" />
+```
 
 ## Vue state
 

@@ -4,10 +4,10 @@ import type { OptionalOptions, Offset, Options } from './types';
 
 export default function useObserver(options: OptionalOptions = {}) {
   const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+  const visibleClass = `${prefix}-visible`;
 
   const defaultOptions: Options = {
     root: null,
-    visibleClass: `${prefix}-visible`,
     threshold: 0.1,
     repeat: false,
     mirror: false,
@@ -23,7 +23,7 @@ export default function useObserver(options: OptionalOptions = {}) {
 
   const observerOptions: IntersectionObserverInit = {
     root: mergedOptions.root,
-    rootMargin: calculateOffset(mergedOptions.offset),
+    rootMargin: calculateOffset(mergedOptions.offset as Offset),
     threshold: mergedOptions.threshold,
   };
 
@@ -39,23 +39,23 @@ export default function useObserver(options: OptionalOptions = {}) {
   function animationObserverFunction(entries: IntersectionObserverEntry[]) {
     entries.forEach((entry) => {
       const targetElement = entry.target as HTMLElement;
-      const dataAttr = targetElement.dataset.hs;
+      const once = targetElement.dataset['hs-once'];
 
       if (!mergedOptions.repeat && entry.isIntersecting) {
-        targetElement.classList.add(mergedOptions.visibleClass)
+        targetElement.classList.add(visibleClass)
         emit('elementIntersecting', targetElement)
         intersectionObserver.unobserve(targetElement)
         return
       }
 
-      if (entry.isIntersecting && dataAttr && dataAttr.includes('once')) {
-        targetElement.classList.add(mergedOptions.visibleClass)
+      if (entry.isIntersecting && once) {
+        targetElement.classList.add(visibleClass)
         intersectionObserver.unobserve(targetElement)
         emit('elementIntersecting', targetElement)
         return
       }
 
-      targetElement.classList.toggle(mergedOptions.visibleClass, entry.isIntersecting)
+      targetElement.classList.toggle(visibleClass, entry.isIntersecting)
       emit('elementIntersecting', targetElement)
     })
   }

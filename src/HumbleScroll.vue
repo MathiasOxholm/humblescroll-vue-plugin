@@ -11,6 +11,7 @@ interface Props {
   easing?: HumbleEasing;
   size?: HumbleSize;
   speed?: HumbleSpeed;
+  once?: boolean;
 }
 
 const { animation = '', innerClass = '', variables } = defineProps<Props>();
@@ -75,6 +76,7 @@ onBeforeUnmount(() => {
     :data-hs-easing="easing" 
     :data-hs-size="size" 
     :data-hs-speed="speed"
+    :data-hs-once="once"
   >
     <div :class="innerClass" :style="cssVariables">
       <slot :is-intersecting="isIntersecting" />

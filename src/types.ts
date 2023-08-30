@@ -14,7 +14,6 @@ export interface OptionalOffset {
 
 export interface Options {
   root: HTMLElement | null;
-  visibleClass: string;
   threshold: number;
   repeat: boolean;
   mirror: boolean;
@@ -33,12 +32,12 @@ export interface HumbleVariables {
   delay?: string;
   easing?: string;
   duration?: string;
-  opacity?: number;
+  opacity?: string;
   translateY?: string;
   translateX?: string;
   scale?: number;
   rotate?: string;
-  perspective?: number;
+  perspective?: string;
   rotateX?: string;
   rotateY?: string;
   skewX?: string;
@@ -54,7 +53,7 @@ export interface HumbleVariables {
   staggerAmount?: string;
   skewAmount?: string;
   revealAmount?: string;
-  blur?: number;
+  blur?: string;
   blurAmount?: string;
 }
 
