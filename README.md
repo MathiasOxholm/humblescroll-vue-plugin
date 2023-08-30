@@ -65,6 +65,10 @@ export default {
 Use the HumbleScroll component in your Vue components.
 
 ```html
+<script setup lang="ts">
+  import { HumbleScroll } from 'humblescroll-vue'
+</script>
+
 <template>
   <HumbleScroll animation="fade up">
     <h1 class="text-4xl font-bold">HumbleScroll</h1>
