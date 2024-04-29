@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
 import { onEvent } from './eventBus';
-import { inject } from '@vue/runtime-core';
+import { inject } from 'vue';
 import type { HumbleVariables, HumbleEasing, HumbleSize, HumbleSpeed } from './types';
 
 interface Props {

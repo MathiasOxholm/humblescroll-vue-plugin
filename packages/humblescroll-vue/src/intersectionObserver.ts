@@ -1,10 +1,10 @@
-import { prefix } from './variables';
+import { inViewName } from './variables';
 import { emit } from './eventBus';
 import type { OptionalOptions, Offset, Options } from './types';
 
 export default function useObserver(options: OptionalOptions = {}) {
   const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-  const visibleClass = `${prefix}-visible`;
+  const visibleClass = inViewName;
 
   const defaultOptions: Options = {
     root: null,
