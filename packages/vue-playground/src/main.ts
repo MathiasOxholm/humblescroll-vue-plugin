@@ -6,7 +6,6 @@ import router from './router'
 import { humbleScrollVuePlugin } from 'humblescroll-vue'
 import 'humblescroll-vue/dist/style.css'
 
-
 const app = createApp(App)
 
 app.use(router)
