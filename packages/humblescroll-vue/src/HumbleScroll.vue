@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
-import { onEvent } from './eventBus';
-import { inject } from '@vue/runtime-core';
-import type { HumbleVariables, HumbleEasing, HumbleSize, HumbleSpeed } from './types';
+import { onMounted, onBeforeUnmount, ref, computed, shallowRef, inject } from 'vue';
+import { onEvent } from '@/eventBus';
+import type { HumbleVariables, HumbleEasing, HumbleSize, HumbleSpeed } from '@/types';
 
-interface Props {
+type HumbleProps = {
   animation?: string;
   innerClass?: string;
   variables?: HumbleVariables;
@@ -12,16 +11,30 @@ interface Props {
   size?: HumbleSize;
   speed?: HumbleSpeed;
   once?: boolean;
+  element?: string;
+  innerElement?: string;
 }
 
-const { animation = '', innerClass = '', variables } = defineProps<Props>();
+const props = withDefaults(defineProps<HumbleProps>(), {
+  animation: '',
+  innerClass: '',
+  variables: undefined,
+  easing: undefined,
+  size: undefined,
+  speed: undefined,
+  once: undefined,
+  element: 'div',
+  innerElement: 'div',
+});
 
-const element = ref<HTMLElement | null>(null);
+const element = shallowRef<HTMLElement | null>(null);
 const humbleElements = ref<HTMLElement[]>([]);
 const humbleObserver = ref<IntersectionObserver>();
-const isIntersecting = ref<boolean>(false);
+const isIntersecting = shallowRef<boolean>(false);
 
-const emit = defineEmits(['intersecting']);
+const emit = defineEmits<{
+  intersecting: [value: boolean]
+}>();
 
 function emitIntersecting (value: boolean) {
   isIntersecting.value = value;
@@ -29,11 +42,11 @@ function emitIntersecting (value: boolean) {
 };
 
 const cssVariables = computed(() => {
-  if (!variables) {
+  if (!props.variables) {
     return; 
   }
 
-  const mappedVariables = Object.entries(variables).map(([key, value]) => {
+  const mappedVariables = Object.entries(props.variables).map(([key, value]) => {
     return `--hs-${key}: ${value};`;
   }).join(' ');
 
@@ -70,16 +83,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div 
+  <component
     ref="element" 
+    :is="props.element" 
     :data-hs="animation" 
     :data-hs-easing="easing" 
     :data-hs-size="size" 
     :data-hs-speed="speed"
     :data-hs-once="once"
   >
-    <div :class="innerClass" :style="cssVariables">
+    <component :is="innerElement" :class="[innerClass]" :style="cssVariables">
       <slot :is-intersecting="isIntersecting" />
-    </div>
-  </div>
+    </component>
+  </component>
 </template>

@@ -1,8 +1,9 @@
 import plugin from 'tailwindcss/plugin';
-import { attrName, varName, easingVariations, sizeVariations, speedVariations } from './variables';
-import type { PluginOptions } from './types';
+import { attrName, varName, easingVariations, sizeVariations, speedVariations } from '@/variables';
+import type { PluginOptions } from '@/types';
+import type { CSSRuleObject } from 'tailwindcss/types/config';
 
-function generateTranslateCalc(translateAmount: string, translateRatio: string, negative: boolean) {
+function generateTranslateCalc (translateAmount: string, translateRatio: string, negative: boolean) {
   const base = `${translateAmount} * ${translateRatio}`;
 
   if (negative) {
@@ -12,29 +13,31 @@ function generateTranslateCalc(translateAmount: string, translateRatio: string, 
   return `calc(${base})`;
 }
 
-function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
+function humbleScrollPlugin ({ addUtilities, config }: PluginOptions) {
   const tailwindConfig = config();
 
   function generateResponsiveUtilities(name: string, regex: string, prop: string, value: string) {
-    const utilities: any = {
+    const utilities: CSSRuleObject = {
       [`[${attrName}${regex}='${name}'] > *`]: {
         [prop]: value,
       }
     }
 
-    for (const [screen, size] of Object.entries(tailwindConfig.theme.screens)) {
-      utilities[`@media (min-width: ${size})`] = {
-        [`[${attrName}${regex}='${screen}:${name}'] > *`]: {
-          [prop]: value,
-        }
-      };
+    if (tailwindConfig?.theme?.screens) {
+      for (const [screen, size] of Object.entries(tailwindConfig.theme.screens)) {
+        utilities[`@media (min-width: ${size})`] = {
+          [`[${attrName}${regex}='${screen}:${name}'] > *`]: {
+            [prop]: value,
+          }
+        };
+      }
     }
 
     return utilities;
   }
 
-  function generateEasing() {
-    const easing: any = {};
+  function generateEasing () {
+    const easing: CSSRuleObject = {};
 
     easingVariations.forEach((variation) => {
       easing[`[${attrName}-easing*='${variation}'] > *`] = {
@@ -45,8 +48,8 @@ function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
     return easing;
   }
 
-  function generateVariations(name: string, variations: any, prop: string) {
-    const utilities: any = {};
+  function generateVariations (name: string, variations: typeof sizeVariations | typeof speedVariations, prop: string) {
+    const utilities: CSSRuleObject = {};
 
     Object.entries(variations).forEach(([variation, value]) => {
       utilities[`[${attrName}-${name}~='${variation}'] > *`] = {
@@ -119,6 +122,6 @@ function humbleScrollPlugin({ addUtilities, config }: PluginOptions) {
 }
 
 /**
- * HumbleScroll TailwindCSS plugin 
+ * HumbleScroll TailwindCSS plugin.
  */
 export default plugin(humbleScrollPlugin);

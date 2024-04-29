@@ -1,20 +1,15 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": [
-    "packages/*/src/**/*.ts", 
-    "packages/*/src/**/*.vue"
-  ],
+  "include": ["src/**/*", "src/**/*.vue"],
   "exclude": ["node_modules", "vue-demo"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "noEmit": true,
     "target": "esnext",
     "module": "esnext",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "declaration": true,
     "composite": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
