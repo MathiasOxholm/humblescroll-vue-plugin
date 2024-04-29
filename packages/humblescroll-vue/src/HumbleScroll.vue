@@ -19,8 +19,12 @@ const props = withDefaults(defineProps<HumbleProps>(), {
   animation: '',
   innerClass: '',
   variables: undefined,
+  easing: undefined,
+  size: undefined,
+  speed: undefined,
+  once: undefined,
   element: 'div',
-  innerElement: 'div'
+  innerElement: 'div',
 });
 
 const element = shallowRef<HTMLElement | null>(null);
