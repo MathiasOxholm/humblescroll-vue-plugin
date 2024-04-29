@@ -1,18 +1,15 @@
-export interface Offset {
+import type { Config, PluginAPI } from 'tailwindcss/types/config';
+
+export type Offset = {
   top: number;
   right: number;
   bottom: number;
   left: number;
 }
 
-export interface OptionalOffset {
-  top?: number;
-  right?: number;
-  bottom?: number;
-  left?: number;
-}
+export type OptionalOffset = Partial<Offset>;
 
-export interface Options {
+export type Options = {
   root: HTMLElement | null;
   threshold: number;
   repeat: boolean;
@@ -20,15 +17,9 @@ export interface Options {
   offset: OptionalOffset;
 }
 
-export interface OptionalOptions {
-  root?: HTMLElement | null;
-  threshold?: number;
-  repeat?: boolean;
-  mirror?: boolean;
-  offset?: Offset;
-}
+export type OptionalOptions = Partial<Options>;
 
-export interface HumbleVariables {
+export type HumbleVariables = {
   delay?: string;
   easing?: string;
   duration?: string;
@@ -57,9 +48,9 @@ export interface HumbleVariables {
   blurAmount?: string;
 }
 
-export interface PluginOptions {
-  addUtilities: (utilities: any) => void;
-  config: () => any;
+export type PluginOptions = {
+  addUtilities: PluginAPI['addUtilities'];
+  config: () => Config;
 }
 
 export type HumbleEasing = 'ease-in' | 'ease-out' | 'ease-in-out' | 'ease-out-back';

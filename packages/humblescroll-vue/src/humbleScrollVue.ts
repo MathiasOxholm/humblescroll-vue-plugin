@@ -1,14 +1,14 @@
 import type { App } from "vue";
-import useObserver from "./intersectionObserver";
-import type { OptionalOptions } from './types';
+import useObserver from "@/intersectionObserver";
+import type { OptionalOptions } from '@/types';
 
 /**
- * HumbleScroll Vue Scroll Animation Plugin
+ * HumbleScroll Vue Scroll Animation Plugin.
  */
 export default {
   install(app: App<Element>, options?: OptionalOptions) {
 
-    const { intersectionObserver } = useObserver(options)
+    const { intersectionObserver } = useObserver(options);
     const humbleElements: HTMLElement[] = [];
 
     app.provide('humbleElements', humbleElements);

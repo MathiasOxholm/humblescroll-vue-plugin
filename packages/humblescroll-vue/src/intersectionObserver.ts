@@ -1,10 +1,12 @@
-import { inViewName } from './variables';
-import { emit } from './eventBus';
-import type { OptionalOptions, Offset, Options } from './types';
+import { inViewName } from '@/variables';
+import { emit } from '@/eventBus';
+import type { OptionalOptions, Offset, Options } from '@/types';
 
+/**
+ *  The main intersection observer function that will be used in the Vue plugin.
+ */
 export default function useObserver(options: OptionalOptions = {}) {
   const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-  const visibleClass = inViewName;
 
   const defaultOptions: Options = {
     root: null,
@@ -42,20 +44,20 @@ export default function useObserver(options: OptionalOptions = {}) {
       const once = targetElement.getAttribute('data-hs-once');
 
       if (!mergedOptions.repeat && entry.isIntersecting) {
-        targetElement.classList.add(visibleClass)
+        targetElement.classList.add(inViewName)
         emit('elementIntersecting', targetElement)
         intersectionObserver.unobserve(targetElement)
         return
       }
 
       if (entry.isIntersecting && once && once === 'true') {
-        targetElement.classList.add(visibleClass)
+        targetElement.classList.add(inViewName)
         intersectionObserver.unobserve(targetElement)
         emit('elementIntersecting', targetElement)
         return
       }
 
-      targetElement.classList.toggle(visibleClass, entry.isIntersecting)
+      targetElement.classList.toggle(inViewName, entry.isIntersecting)
       emit('elementIntersecting', targetElement)
     })
   }
