@@ -1,2 +1,6 @@
 packages:
-  - 'packages/*'
+  - 'packages/docs'
+  - 'packages/humblescroll-vue'
+  - 'packages/humblescroll-nuxt'
+  - 'packages/humblescroll-nuxt/playground'
+  - 'packages/vue-playground'
