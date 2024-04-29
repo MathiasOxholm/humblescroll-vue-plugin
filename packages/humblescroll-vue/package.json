@@ -25,7 +25,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:watch": "vite build --watch",
-    "release": "pnpm && pnpm publish"
+    "release": "pnpm build && pnpm publish"
   },
   "keywords": [
     "vue",
