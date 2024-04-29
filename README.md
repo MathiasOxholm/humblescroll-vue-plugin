@@ -7,3 +7,4 @@ Humblescroll is a simple, lightweight, and easy-to-use JavaScript library for cr
 - Vue 3 plugin
 - TailwindCSS plugin
 - Nuxt 3 plugin (coming soon)
+- Documentation

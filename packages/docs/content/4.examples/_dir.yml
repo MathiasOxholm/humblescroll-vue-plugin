@@ -1,0 +1,4 @@
+title: 'Examples'
+icon: heroicons:play-20-solid
+navigation.redirect: /examples/vue
+redirect: /examples/vue
