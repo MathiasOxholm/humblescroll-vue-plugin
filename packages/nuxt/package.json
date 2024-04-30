@@ -1,6 +1,6 @@
 {
   "name": "humblescroll-nuxt",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Nuxt module for Humblescroll Vue",
   "repository": "mathiasoxholm/humblescroll-nuxt",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "pnpm test && pnpm prepack && changelogen --release && pnpm publish && git push --follow-tags",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "vitest run",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "humblescroll-vue": "workspace:*"
+    "humblescroll-vue": "1.2.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
