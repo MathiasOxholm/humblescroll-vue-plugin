@@ -16,22 +16,22 @@ withDefaults(defineProps<Props>(), {
   <HumbleScroll
     :animation="animation"
     :variables="variables"
+    element="article"
+    inner-class="flex flex-col items-start justify-between px-8 py-8 space-y-20 transition-all duration-300 border rounded-lg bg-slate-800 border-slate-700"
   >
-    <article class="flex flex-col items-start justify-between px-8 py-8 space-y-20 transition-all duration-300 border rounded-lg bg-slate-800 border-slate-700">
-      <h3 class="text-2xl text-center">
-        {{ title }}
-      </h3>
+    <h3 class="text-2xl text-center">
+      {{ title }}
+    </h3>
 
-      <code
-        v-if="code"
-        class="flex px-4 py-3 font-mono text-sm rounded-md bg-slate-900"
-      >
-        <slot>
-          <span class="flex text-blue-300 whitespace-nowrap">animation</span>
-          <span class="flex text-blue-400">=</span>
-          <span class="flex text-purple-400">"{{ animation }}"</span>
-        </slot>
-      </code>
-    </article>
+    <code
+      v-if="code"
+      class="flex px-4 py-3 font-mono text-sm rounded-md bg-slate-900"
+    >
+      <slot>
+        <span class="flex text-blue-300 whitespace-nowrap">animation</span>
+        <span class="flex text-blue-400">=</span>
+        <span class="flex text-purple-400">"{{ animation }}"</span>
+      </slot>
+    </code>
   </HumbleScroll>
 </template>
