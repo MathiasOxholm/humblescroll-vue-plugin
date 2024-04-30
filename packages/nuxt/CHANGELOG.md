@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.0.10
+
+[compare changes](https://github.com/mathiasoxholm/humblescroll-nuxt/compare/v1.0.9...v1.0.10)
+
 ## v1.0.9
 
 ## v1.0.8
