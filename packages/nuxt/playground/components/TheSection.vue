@@ -13,17 +13,24 @@ if (props.columns == 3) {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center py-20">
+  <section class="flex flex-col justify-center py-20">
     <div class="flex flex-col mb-16 space-y-6">
-      <HumbleScroll animation="fade up once">
-        <h2 class="text-4xl lg:text-5xl">
-          {{ title }}
-        </h2>
+      <HumbleScroll 
+        animation="fade up once"
+        element="h2" 
+        inner-element="span"
+        inner-class="text-4xl lg:text-5xl"
+      >
+        {{ title }}
       </HumbleScroll>
-      <HumbleScroll animation="fade up once">
-        <p class="max-w-xl text-lg text-slate-400">
-          {{ description }}
-        </p>
+      
+      <HumbleScroll 
+        animation="fade up once"
+        element="p"
+        inner-element="span"
+        inner-class="max-w-xl text-lg text-slate-400"
+      >
+        {{ description }}
       </HumbleScroll>
     </div>
 
@@ -33,5 +40,5 @@ if (props.columns == 3) {
     >
       <slot />
     </div>
-  </div>
+  </section>
 </template>

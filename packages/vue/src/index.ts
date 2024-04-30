@@ -5,8 +5,8 @@ import './humbleScroll.css';
 
 export * from '@/types';
 
-export { 
-  HumbleScroll, 
-  humbleScrollTailwindPlugin, 
-  humbleScrollVuePlugin 
+export {
+  HumbleScroll,
+  humbleScrollTailwindPlugin,
+  humbleScrollVuePlugin
 }
