@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "humblescroll-vue": "1.2.0"
+    "humblescroll-vue": "1.2.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

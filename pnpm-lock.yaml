@@ -69,8 +69,8 @@ importers:
         specifier: ^3.11.2
         version: 3.11.2(rollup@4.17.1)
       humblescroll-vue:
-        specifier: 1.2.0
-        version: 1.2.0(tailwindcss@3.4.3)(vue@3.4.26(typescript@5.4.5))
+        specifier: 1.2.1
+        version: 1.2.1(tailwindcss@3.4.3)(vue@3.4.26(typescript@5.4.5))
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
@@ -3487,8 +3487,8 @@ packages:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
 
-  humblescroll-vue@1.2.0:
-    resolution: {integrity: sha512-1K0V8m12Z43M0sC7y0TY+6gh9mM0kodjCE2/rtqeIqITjFyl003j40RMGkUGNy4MAAEA86VAjHi9+5hzTA/g2A==}
+  humblescroll-vue@1.2.1:
+    resolution: {integrity: sha512-ekQtWO1yC0hRXcG5L1xgw7DqQDveDXVEI6V+NXCdpha0b9AqtO/zIbRFoIAd50r4ljWbDn435jDzgOHfkfrsVg==}
     peerDependencies:
       tailwindcss: ^3.3.3
       vue: ^3.3.4
@@ -10640,7 +10640,7 @@ snapshots:
 
   human-signals@5.0.0: {}
 
-  humblescroll-vue@1.2.0(tailwindcss@3.4.3)(vue@3.4.26(typescript@5.4.5)):
+  humblescroll-vue@1.2.1(tailwindcss@3.4.3)(vue@3.4.26(typescript@5.4.5)):
     dependencies:
       tailwindcss: 3.4.3
       vue: 3.4.26(typescript@5.4.5)
