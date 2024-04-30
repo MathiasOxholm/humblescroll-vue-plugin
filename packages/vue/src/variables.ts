@@ -1,3 +1,5 @@
+import type { Options } from '@/types';
+
 // Global variables
 export const prefix = 'hs' as const;
 export const varName = `--${prefix}` as const;
@@ -18,4 +20,17 @@ export const speedVariations = {
   slow: '1.5',
   fast: '0.75',
   'extra-fast': '0.5',
+} as const;
+
+export const defaultOptions: Options = {
+  root: null,
+  threshold: 0.1,
+  repeat: false,
+  mirror: false,
+  offset: {
+    top: 0,
+    right: 0,
+    bottom: -40,
+    left: 0,
+  },
 } as const;
