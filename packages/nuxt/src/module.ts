@@ -36,6 +36,5 @@ export default defineNuxtModule<OptionalOptions>({
         src: 'https://humblescroll-docs.oxholm.dev/api/',
       },
     })
-
   }
 })
