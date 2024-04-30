@@ -25,7 +25,9 @@
     "dev": "vite",
     "build": "vite build",
     "build:watch": "vite build --watch",
-    "release": "pnpm build && pnpm publish"
+    "release": "pnpm build && pnpm publish",
+    "playground": "cd playground && pnpm dev",
+    "dev:playground": "concurrently \"pnpm build:watch\" \"pnpm playground\""
   },
   "keywords": [
     "vue",

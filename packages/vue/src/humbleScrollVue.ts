@@ -8,6 +8,10 @@ import type { OptionalOptions } from '@/types';
 export default {
   install(app: App<Element>, options?: OptionalOptions) {
 
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+
     const { intersectionObserver } = useObserver(options);
     const humbleElements: HTMLElement[] = [];
 

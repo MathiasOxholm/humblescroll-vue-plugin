@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref, computed, shallowRef, inject } from 'vue';
+import { onMounted, onBeforeUnmount, ref, computed, inject } from 'vue';
 import { onEvent } from '@/eventBus';
 import type { HumbleVariables, HumbleEasing, HumbleSize, HumbleSpeed } from '@/types';
 
@@ -27,10 +27,10 @@ const props = withDefaults(defineProps<HumbleProps>(), {
   innerElement: 'div',
 });
 
-const element = shallowRef<HTMLElement | null>(null);
+const element = ref<HTMLElement | null>(null);
 const humbleElements = ref<HTMLElement[]>([]);
 const humbleObserver = ref<IntersectionObserver>();
-const isIntersecting = shallowRef<boolean>(false);
+const isIntersecting = ref<boolean>(false);
 
 const emit = defineEmits<{
   intersecting: [value: boolean]

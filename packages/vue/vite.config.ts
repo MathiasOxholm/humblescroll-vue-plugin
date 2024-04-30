@@ -12,11 +12,10 @@ export default defineConfig({
       fileName: 'humble-scroll',
     },
     rollupOptions: {
-      external: ['vue', '@vue/runtime-core'],
+      external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue',
-          '@vue/runtime-core': 'Vue runtime',
+          vue: 'Vue'
         },
       },
     },
@@ -30,6 +29,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+    },
+    extensions: ['.js', '.ts', '.vue']
   }
 })

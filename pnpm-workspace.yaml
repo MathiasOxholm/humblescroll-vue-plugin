@@ -1,2 +1,6 @@
 packages:
-  - 'packages/*'
+  - 'packages/docs'
+  - 'packages/vue'
+  - 'packages/nuxt'
+  - 'packages/nuxt/playground'
+  - 'packages/vue/playground'
